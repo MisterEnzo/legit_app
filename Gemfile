@@ -14,7 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'materialize-sass', '~> 1.0'
 gem 'material_icons'
 gem 'devise'
-
+gem 'faker', '~> 1.9', '>= 1.9.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
