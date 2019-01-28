@@ -19,3 +19,14 @@ puts "Creating companies..."
   )
 end
 puts "Created companies."
+
+puts "Creating sample reviews.."
+6.times do |review|
+  Review.create!(
+    title: "Review ##{review + 1}",
+    content: Faker::Hobbit.quote,
+    user_id: 1,
+    company_id: 1
+  )
+end
+puts "Created reviews."
