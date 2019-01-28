@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :companies
   devise_for :users
 
-  resources :reviews
-  resources :companies, only: [:index, :show]
+  resources :companies, only: [:index, :show] do
+    resources :reviews
+  end
 
   root              to: 'static_pages#home'
   get '/about',     to: 'static_pages#about'

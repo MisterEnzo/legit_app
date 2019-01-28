@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
+  before_action :set_company
   before_action :set_review, only: [:show]
 
   def index
-    @reviews = Review.all
+    @reviews = @company.reviews
   end
 
   def show
@@ -27,6 +28,10 @@ class ReviewsController < ApplicationController
   def destroy
   end
   private
+    def set_company
+      @company = Company.find(params[:company_id])
+    end
+
     def set_review
       @review = Review.find(params[:id])
     end
