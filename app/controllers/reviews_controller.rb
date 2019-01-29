@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_company
-  before_action :set_review, only: [:show]
+  before_action :set_review, only: [:show, :edit]
 
   def index
     @reviews = @company.reviews
@@ -25,6 +25,15 @@ class ReviewsController < ApplicationController
   def edit
   end
 
+  def update
+    @review = Review.new(review_params)
+    if @review.save
+      redirect_to @review
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
   end
   private
@@ -37,6 +46,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:title, :content, :user_id)
+      params.require(:review).permit(:title, :content, :user_id, :company_id)
     end
 end
