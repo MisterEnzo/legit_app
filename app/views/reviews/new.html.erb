@@ -1,17 +1,15 @@
 <%= form_for([@company, @review]) do |f| %>
   <% if @review.errors.any? %>
-    <p>There are <%= pluralize(@review.errors.count, 'error') %></p>
+    <p>There are <%= pluralize(@review.errors.count, 'error') %>
     <ul>
       <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>    
+        <li><%= message %></li>
       <% end %>
     </ul>
   <% end %>
-  <%= hidden_field_tag :company_id, @company.id %>
-  <%= hidden_field_tag :user_id, 1 %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :content %>
   <%= f.text_area :content %>
-  <%= f.submit "Save" %>
+  <%= f.submit "Submit" %>
 <% end %>

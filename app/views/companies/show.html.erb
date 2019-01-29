@@ -1,3 +1,13 @@
 <h1><%= @company.name %></h1>
 <p><%= @company.address %></p>
 <p><%= @company.telephone %></p>
+
+<h3>Reviews:</h3>
+<ul>
+  <% @company.reviews.each do |review| %>
+    <li>
+      <p><%= review.title %></p>
+      <p><%= review.content %></p>
+    </li>
+  <% end %>
+</ul>
