@@ -1,9 +1,8 @@
 <h1>Reviews</h1>
 <% @reviews.each do |review| %>
-  <h3><%= review.title %></h3>
+  <%= link_to tag.h3(review.title), company_review_path(@company, review) %>
   <p><%= review.content %></p>
   
-  <%= link_to 'Show', company_review_path(@company, review) %>
   <%= link_to 'Edit', edit_company_review_path(@company, review) %>
   <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>  
 <% end %>
