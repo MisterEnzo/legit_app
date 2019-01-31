@@ -3,16 +3,10 @@
     <%= link_to "Legit", root_url, class: "brand-logo" %>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><%= link_to "Search Bar goes here", "#", class: "search-bar" %></li>
-      <li><%= link_to "About", '/about' %>'</li>
-      <li><%= link_to "Business", '/company' %></li>
-      <%= login_helper %>
+      <%= render 'shared/nav_options' %>
     </ul>
   </div>
 </nav>
 <ul class="sidenav" id="mobile-demo">
-  <li><%= link_to "Search Bar goes here", "#", class: "search-bar" %></li>
-  <li><%= link_to "About", '/about' %></li>
-  <li><%= link_to "Business", '/company' %></li>
-  <%= login_helper %>
+  <%= render 'shared/nav_options' %>
 </ul>

@@ -1,7 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show]
   def index
-    @companies = Company.all
+    if params[:query].present?
+      @companies = Company.where("name ILIKE?", "%#{params[:query]}%")
+    else
+      @companies = Company.all
+    end
   end
 
   def show

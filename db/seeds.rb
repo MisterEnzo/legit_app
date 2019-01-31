@@ -8,6 +8,23 @@ end
 puts "Created users."
 
 puts "Creating companies..."
+Company.create!(
+  name: 'Facebook',
+  email: 'support@facebook.com',
+  password: 123123,
+  address: 'Palo Alto, California'
+)
+
+Company.create!(
+  name: 'Google',
+  email: 'support@google.com',
+  password: 123123,
+  address: 'Mountain View, California'
+)
+
+5.times do |company|
+  
+
 5.times do |company|
   name = Faker::Company.name.downcase.gsub(/[^0-9A-Za-z]/, '')
   Company.create!(

@@ -1,0 +1,12 @@
+<li>
+  <%= form_tag companies_path, method: :get do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "",
+        placeholder: "Get to know a Company"
+    %>
+  <% end %>
+</li>
+<li><%= link_to "About", '/about' %>'</li>
+<li><%= link_to "Business", '/company' %></li>
+<%= login_helper %>

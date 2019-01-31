@@ -1,7 +1,7 @@
 <div>
   <h1><%= @company.name %></h1>
   <p><%= @company.address %></p>
-  <p><%= @company.telephone %></p>
+  <p><%= @company.telephone if @company.telephone %></p>
 </div>
 <div>
   <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
