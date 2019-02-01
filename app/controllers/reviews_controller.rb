@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_company
-  before_action :set_review, only: [:show, :edit]
+  before_action :set_review, only: [:show, :edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
@@ -29,8 +29,8 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.new(review_params)
-    if @review.save
+    authorize @review
+    if @review.update(review_params)
       redirect_to company_reviews_path
     else
       render 'edit'
