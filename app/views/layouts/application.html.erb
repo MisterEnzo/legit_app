@@ -13,5 +13,6 @@
     <%= render 'shared/nav' %>
     <%= yield %>
     <%= debug params %>
+    <span>current_user: <%= current_user.email if current_user %></span>
   </body>
 </html>

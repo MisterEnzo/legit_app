@@ -10,11 +10,13 @@
   <%= link_to "Reviews", company_reviews_path(@company), class: "btn" %>
   <h3>Recent Reviews:</h3>
   <% @reviews.each do |review| %>
-    <h4><%= review.title %></h4>
+    <h4><%= link_to review.title, company_review_path(@company, review) %></h4>
     <p><%= review.content %></p>
-    
-    <%= link_to 'Show', company_review_path(@company, review) %>
-    <%= link_to 'Edit', edit_company_review_path(@company, review) %>
-    <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>  
+    <% if policy(review).edit? %>
+      <%= link_to 'Edit', edit_company_review_path(@company, review) %>
+    <% end %>
+    <% if policy(review).destroy? %>
+      <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>  
+    <% end %>
   <% end %>
 </div>
