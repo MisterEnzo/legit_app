@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_company
-  before_action :set_review, only: [:show, :edit, :update]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    authorize @review
   end
 
   def update
@@ -38,7 +39,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    authorize @review
+    redirect_to company_reviews_path if @review.destroy
   end
+
   private
     def set_company
       @company = Company.find(params[:company_id])
