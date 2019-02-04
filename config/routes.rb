@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies, only: [:index, :show] do
-    resources :reviews
+    resources :reviews, except: [:show]
   end
 
   root              to: 'static_pages#home'
