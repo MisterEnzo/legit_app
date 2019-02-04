@@ -2,7 +2,7 @@
   <%= form_tag companies_path, method: :get do %>
     <%= text_field_tag :query,
         params[:query],
-        class: "",
+        class: "search-bar",
         placeholder: "Get to know a Company"
     %>
   <% end %>
