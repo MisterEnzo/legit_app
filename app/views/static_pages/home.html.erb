@@ -3,6 +3,7 @@
     <h1>Legit.</h1>
     <h6>Read about companies. Review them. Improve the user experience.</h6>
     <%= form_tag companies_path, method: :get do %>
+      <i class="material-icons">search</i>
       <%= text_field_tag :query,
           params[:query],
           class: "home-search-bar search-bar",

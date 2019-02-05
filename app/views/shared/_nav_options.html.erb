@@ -1,4 +1,7 @@
 <li>
+  <i class="material-icons">search</i>
+</li>
+<li class="search-wrapper">
   <%= form_tag companies_path, method: :get do %>
     <%= text_field_tag :query,
         params[:query],

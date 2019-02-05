@@ -1,22 +1,25 @@
-<div>
-  <h1><%= @company.name %></h1>
+<div class="container">
+  <h1><%= @company.name %></h1><span> Rating: </span>
   <p><%= @company.address %></p>
   <p><%= @company.telephone if @company.telephone %></p>
+  <div >
+    <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
+  </div>
 </div>
-<div>
-  <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
-</div>
-<div>
-  <%= link_to "Reviews", company_reviews_path(@company), class: "btn" %>
-  <h3>Recent Reviews:</h3>
+
+<div class="container">
+  <h5>Recent Reviews:</h5>
   <% @reviews.each do |review| %>
-    <h4><%= link_to review.title, company_review_path(@company, review) %></h4>
-    <p><%= review.content %></p>
-    <% if policy(review).edit? %>
-      <%= link_to 'Edit', edit_company_review_path(@company, review) %>
-    <% end %>
-    <% if policy(review).destroy? %>
-      <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>  
-    <% end %>
+    <div class="review">
+      <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>
+      <p class="review-content"><%= review.content %></p>
+      <% if policy(review).edit? %>
+        <%= link_to 'Edit', edit_company_review_path(@company, review) %>
+      <% end %>
+      <% if policy(review).destroy? %>
+        <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>  
+      <% end %>
+    </div>
+    <hr>
   <% end %>
 </div>
