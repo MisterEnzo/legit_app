@@ -1,3 +1,15 @@
-<% @companies.each do |company| %>
-  <h1><%= link_to company.name, company %></h1>
-<% end %>
+<div class="container">
+  <% if params[:query].present? %>
+    <h4>Here are your search results for: <%= params[:query] %></h4>
+  <% end %>
+
+  <div class="row">
+    <% @companies.each do |company| %>
+      <div class="company-search-profile">
+        <h5><%= link_to company.name, company %></h5>
+        <p class="company-profile-info">Rating | # of reviews </p>
+        <p class="company-profile-info">Write a Review </p>
+      </div>
+    <% end %>
+  </div>
+</div>
