@@ -23,16 +23,14 @@ Company.create!(
 )
 
 5.times do |company|
-  
-
-5.times do |company|
   name = Faker::Company.name.downcase.gsub(/[^0-9A-Za-z]/, '')
   Company.create!(
     name: name,
     email: "contact@#{name}.com",
     password: 123123,
     address: Faker::Address.full_address,
-    telephone: Faker::Number.number(7)
+    telephone: Faker::Number.number(7),
+    rating: ((5*rand()).truncate(2))
   )
 end
 puts "Created companies."
@@ -43,7 +41,8 @@ puts "Creating sample reviews.."
     title: "Review ##{review + 1}",
     content: Faker::Hobbit.quote,
     user_id: 1,
-    company_id: 1
+    company_id: 1,
+    rating: (rand()*5)
   )
 end
 puts "Created reviews."

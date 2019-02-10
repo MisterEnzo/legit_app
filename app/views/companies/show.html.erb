@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @company.name %></h1><span> Rating: </span>
+  <h1><%= @company.name %></h1><span> Rating: <%= @company.rating? ? rating_helper : "none yet" %></span>
   <p><%= @company.address %></p>
   <p><%= @company.telephone if @company.telephone %></p>
   <div >
