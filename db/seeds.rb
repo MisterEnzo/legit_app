@@ -41,7 +41,8 @@ puts "Creating sample reviews.."
     title: "Review ##{review + 1}",
     content: Faker::Hobbit.quote,
     user_id: 1,
-    company_id: 1
+    company_id: 1,
+    rating: (rand()*5)
   )
 end
 puts "Created reviews."
