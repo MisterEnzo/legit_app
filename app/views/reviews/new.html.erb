@@ -1,17 +1,24 @@
-<%= form_for([@company, @review]) do |f| %>
-  <% if @review.errors.any? %>
-    <p>There are <%= pluralize(@review.errors.count, 'error') %>
-    <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <h3>Review for <%= @company.name %></h3>
+    <div class="col s6">
+      <%= form_for([@company, @review]) do |f| %>
+        <% if @review.errors.any? %>
+          <p>There are <%= pluralize(@review.errors.count, 'error') %>
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+        <%= f.submit "Submit Review" %>
       <% end %>
-    </ul>
-  <% end %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
-  <%= f.submit "Submit" %>
-<% end %>
+    </div>
+  </div>
+</div>
