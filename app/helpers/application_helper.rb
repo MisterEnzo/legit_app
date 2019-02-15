@@ -11,7 +11,7 @@ module ApplicationHelper
   def rating_helper
     #display number of full stars
     rating = @company.rating
-    stars = (tag.span "") 
+    stars = (tag.span "")
     rating.to_i.times do
       stars += (tag.i "star", class: "material-icons")
     end
@@ -31,4 +31,5 @@ module ApplicationHelper
     end
     stars
   end
+
 end

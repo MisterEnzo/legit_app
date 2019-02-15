@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
     @review.company_id = params[:company_id]
     @review.user_id = current_user.id
     if @review.save
+      compute_rating
       redirect_to company_reviews_path
     else
       render 'new'
@@ -54,5 +55,18 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:title, :content, :rating, :company_id)
+    end
+
+    def compute_rating
+      ratings = @company.reviews.map do |review|
+        review.rating
+      end
+      total = 0
+      ratings.each do |rating|
+        total += rating
+      end
+      count = ratings.count
+      average = total/count
+      @company.update_attribute('rating', average)
     end
 end

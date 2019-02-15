@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= @company.name %></h1>
-  <span> Rating: </span>
+  <span> Rating: <%= @company.rating? ? rating_helper : "none yet" %></span>
   <div >
     <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
   </div>
@@ -16,7 +16,7 @@
         <%= link_to 'Edit', edit_company_review_path(@company, review) %>
       <% end %>
       <% if policy(review).destroy? %>
-        <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>  
+        <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>
       <% end %>
     </div>
     <hr>
