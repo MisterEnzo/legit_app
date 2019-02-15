@@ -1,7 +1,7 @@
 <div class="container">
-  <h1><%= @company.name %></h1><span> Total Rating: <%= @company.reviews.empty? ? "none yet" : star_rating_helper(@company.rating) %></span>
+  <h1><%= @company.name %></h1>
   <p><%= @company.address %></p>
-  <p><%= @company.telephone if @company.telephone %></p>
+  <p><%= @company.telephone if @company.telephone %></p><%= render 'shared/total_rating' %>
   <div >
     <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
   </div>
