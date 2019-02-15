@@ -8,9 +8,8 @@ module ApplicationHelper
     end
   end
 
-  def rating_helper
+  def star_rating_helper(rating)
     #display number of full stars
-    rating = @company.rating
     stars = (tag.span "")
     rating.to_i.times do
       stars += (tag.i "star", class: "material-icons")

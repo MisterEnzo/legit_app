@@ -4,4 +4,12 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :reviews
+
+  def rating
+    ratings = self.reviews.map { |review| review.rating }
+    total = 0
+    ratings.each { |rating| total += rating }
+    count = ratings.count
+    total / count
+  end
 end

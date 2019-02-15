@@ -29,8 +29,7 @@ Company.create!(
     email: "contact@#{name}.com",
     password: 123123,
     address: Faker::Address.full_address,
-    telephone: Faker::Number.number(7),
-    rating: ((5*rand()).truncate(2))
+    telephone: Faker::Number.number(7)
   )
 end
 puts "Created companies."
