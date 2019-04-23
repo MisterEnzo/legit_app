@@ -1,2 +1,0 @@
-module ReviewImagesHelper
-end
