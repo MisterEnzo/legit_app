@@ -7,4 +7,5 @@ class Review < ApplicationRecord
   validates :rating, presence: true
 
   mount_uploader :image, ImageUploader
+
 end
