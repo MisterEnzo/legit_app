@@ -14,6 +14,9 @@
       <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>
       <%= star_rating_helper(review.rating) %>
       <p class="review-content"><%= review.content %></p>
+      <% if review.image.model.image? %>
+        <%= image_tag review.image.url %>
+      <% end %>
       <% if policy(review).edit? %>
         <%= link_to 'Edit', edit_company_review_path(@company, review) %>
       <% end %>
