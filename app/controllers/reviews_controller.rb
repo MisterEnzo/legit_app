@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     @review.company_id = params[:company_id]
     @review.user_id = current_user.id
     if @review.save
-      redirect_to company_reviews_path
+      redirect_to company_path(@review.company_id)
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
   def update
     authorize @review
     if @review.update(review_params)
-      redirect_to company_reviews_path
+      redirect_to company_path(@review.company_id)
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     authorize @review
-    redirect_to company_reviews_path if @review.destroy
+    redirect_to company_path(@review.company_id) if @review.destroy
   end
 
   private
