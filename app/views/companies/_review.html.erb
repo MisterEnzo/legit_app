@@ -2,6 +2,8 @@
   <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>
   <%= star_rating_helper(review.rating) %>
   <p class="review-content"><%= review.content %></p>
+  <p>Reviewer: <%= review.user.email %></p>
+    <%= image_tag gravatar(review.user) %>
   <% if review.image.model.image? %>
     <%= image_tag review.image.url, width: '300px' %>
   <% end %>
