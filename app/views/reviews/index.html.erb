@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-  <h5>Recent Reviews:</h5>
+  <h5>Reviews:</h5>
   <% @reviews.each do |review| %>
     <div class="review">
       <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>

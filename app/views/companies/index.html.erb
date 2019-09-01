@@ -9,7 +9,7 @@
         <h5><%= link_to company.name, company %></h5>
         <p class="company-profile-info"><%= company.reviews.empty? ?
           "No reviews yet" : star_rating_helper(company.rating) + " | " +
-          "#{company.reviews.count} reviews" %>
+          (link_to "#{company.reviews.count} reviews", company_reviews_path(company.id)) %>
         </p>
         <%= link_to "Write a Review",
             new_company_review_path(company), class:"btn" %>
