@@ -1,17 +1,24 @@
-<div class="review">
-  <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>
-  <%= star_rating_helper(review.rating) %>
-  <p class="review-content"><%= review.content %></p>
-  <p>Reviewer: <%= review.user.email %></p>
-    <%= image_tag gravatar(review.user) %>
-  <% if review.image.model.image? %>
+<div class="review card-panel blue-grey lighten-5 col s8">
+  <div>
+    <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>
+  </div>
+  <div>
+    <%= star_rating_helper(review.rating) %>
+  </div>
+  <div>
+    <p class="review-content"><%= review.content %></p>
+
+    <% if review.image.model.image? %>
     <%= image_tag review.image.url, width: '300px' %>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="reviewer">
+    <p>Review by: <%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></p>
+  </div>
   <% if policy(review).edit? %>
     <%= link_to 'Edit', edit_company_review_path(@company, review) %>
   <% end %>
   <% if policy(review).destroy? %>
     <%= link_to 'Delete', company_review_path(@company, review), method: :delete, data: {confirm: 'Are you sure?' } %>
   <% end %>
-  <hr>
 </div>
