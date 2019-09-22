@@ -45,9 +45,17 @@ search-bar, input[placeholder] {
   margin-bottom: 5px;
 }
 
+.review {
+  position: relative;
+  width: 45%;
+  height: 22em;
+  margin: 1.5% !important;
+}
+
 .review-title{
   text-decoration: underline;
-  margin-bottom: 5px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .review-content{
@@ -59,9 +67,14 @@ search-bar, input[placeholder] {
 }
 
 .reviewer {
+  margin: 2% 0% 0% 0% !important;
   .avatar {
     border-radius: 50%;
-    width: 3em;
+    width: 1.5em;
     vertical-align: middle;
   }
+}
+
+.card-content {
+  padding: 2.5% !important;
 }

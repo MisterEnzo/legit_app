@@ -1,19 +1,19 @@
-<div class="review card-panel blue-grey lighten-5 col s8">
-  <div>
+<div class="review card light-blue lighten-5 col s5">
+  <div class="reviewer">
+    <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
+  </div>
+  <div class="card-title">
     <p class="review-title"><%= link_to review.title, company_review_path(@company, review) %></p>
   </div>
   <div>
     <%= star_rating_helper(review.rating) %>
   </div>
-  <div>
+  <div class="card-content">
     <p class="review-content"><%= review.content %></p>
 
     <% if review.image.model.image? %>
-    <%= image_tag review.image.url, width: '300px' %>
+    <%= image_tag review.image.url, width: '40%' %>
     <% end %>
-  </div>
-  <div class="reviewer">
-    <p>Review by: <%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></p>
   </div>
   <% if policy(review).edit? %>
     <%= link_to 'Edit', edit_company_review_path(@company, review) %>
