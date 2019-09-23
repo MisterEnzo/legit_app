@@ -1,4 +1,7 @@
-<div class="review card light-blue lighten-5 col s6">
+<div class="card light-blue lighten-5 col s6 offset-s3">
+  <div>
+    <p>Review of <%= review.company.name %></p>
+  </div>
   <div class="reviewer">
     <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
   </div>
@@ -10,10 +13,6 @@
   </div>
   <div class="card-content">
     <p class="review-content"><%= review.content %></p>
-
-    <% if review.image.model.image? %>
-    <%= image_tag review.image.url, width: '40%' %>
-    <% end %>
   </div>
   <% if policy(review).edit? %>
     <%= link_to 'Edit', edit_company_review_path(@company, review) %>

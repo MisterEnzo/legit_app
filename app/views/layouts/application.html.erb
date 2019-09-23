@@ -12,6 +12,7 @@
   <body>
     <%= render 'shared/nav' %>
     <%= yield %>
+    <%= yield :after_js %>
     <% if Rails.env.development? %>
       <%= debug params %>
       <%= "Current user: #{current_user.email}" if current_user %>

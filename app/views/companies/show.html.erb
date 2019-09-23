@@ -16,4 +16,12 @@
   <div class="row">
     <%= render partial: 'shared/review', collection: @reviews %>
   </div>
+  <% content_for :after_js do %>
+    <script>
+      var instance = M.Carousel.init({
+        fullWidth: true,
+        indicators: true
+      });
+    </script>
+  <% end %>
 </div>

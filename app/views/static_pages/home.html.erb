@@ -12,5 +12,10 @@
     <% end %>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <%= render partial: 'shared/sample_review', collection: @reviews, as: :review  %>
+  </div>
+</div>
 
 <%= link_to "Companies", companies_path, class: "btn" %>

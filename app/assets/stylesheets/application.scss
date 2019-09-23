@@ -47,11 +47,15 @@ search-bar, input[placeholder] {
 
 .review {
   position: relative;
+  left: 25%;
   width: 45%;
-  height: 22em;
+  min-height: 250px !important;
   margin: 1.5% !important;
 }
 
+.sample-review {
+  min-height: 250px !important;
+}
 .review-title{
   text-decoration: underline;
   margin-top: 0px !important;
