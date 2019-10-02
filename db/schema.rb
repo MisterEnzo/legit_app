@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_083556) do
+ActiveRecord::Schema.define(version: 2019_10_02_140453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 2019_09_23_083556) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "company_id"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_responses_on_company_id"
+    t.index ["review_id"], name: "index_responses_on_review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -56,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_09_23_083556) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "responses", "companies"
+  add_foreign_key "responses", "reviews"
   add_foreign_key "reviews", "companies"
   add_foreign_key "reviews", "users"
 end
