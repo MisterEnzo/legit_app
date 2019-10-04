@@ -9,7 +9,8 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @reviews = @company.reviews.order("updated_at DESC")[0, 3]
+    @reviews = @company.reviews
+    @recent_reviews = @company.reviews.order("updated_at DESC")[0, 3]
   end
 
   private

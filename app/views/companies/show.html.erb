@@ -2,6 +2,9 @@
   <h1><%= @company.name %></h1>
   <p><%= @company.address %></p>
   <p><%= @company.telephone if @company.telephone %></p>
+  <% if current_company == Company.find(params[:id]) %>
+    <%= link_to "Edit Profile", edit_company_registration_path, class: "btn lighten-3 blue" %>
+  <% end %>
   <div>
     <%= render 'shared/total_rating' %>
     <%= link_to "#{@reviews.count} reviews", company_reviews_path(@company) %>
@@ -14,8 +17,9 @@
 <div class="container">
   <h5>Recent Reviews:</h5>
   <div class="row">
-    <%= render partial: 'shared/review', collection: @reviews %>
+    <%= render partial: 'shared/review', collection: @recent_reviews %>
   </div>
+  
   <% content_for :after_js do %>
     <script>
       var instance = M.Carousel.init({
