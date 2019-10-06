@@ -49,7 +49,11 @@ class ReviewsController < ApplicationController
     end
 
     def set_review
-      @review = Review.find(params[:id])
+      if params[:review_id]
+        @review = Review.find(params[:review_id])
+      else
+        @review = Review.find(params[:id])
+      end
     end
 
     def review_params

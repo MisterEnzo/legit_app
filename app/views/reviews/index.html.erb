@@ -1,9 +1,11 @@
 <div class="container">
   <h1><%= @company.name %></h1>
   <%= render 'shared/total_rating' %>
-  <div >
-    <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
-  </div>
+  <% if !current_company %>
+    <div>
+      <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
+    </div>
+  <% end %>
 </div>
 
 <div class="container">

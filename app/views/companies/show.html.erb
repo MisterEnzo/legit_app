@@ -9,8 +9,10 @@
     <%= render 'shared/total_rating' %>
     <%= link_to "#{@reviews.count} reviews", company_reviews_path(@company) %>
   </div>
-  <div >
-    <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
+  <div>
+    <% if !current_company %>
+      <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
+    <% end %>
   </div>
 </div>
 
