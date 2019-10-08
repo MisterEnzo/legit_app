@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:new, :edit, :destroy]
-  before_action :set_review, only: [:new, :edit, :destroy]
+  before_action :set_company, only: [:new, :edit, :update, :destroy]
+  before_action :set_review, only: [:new, :edit, :update, :destroy]
   before_action :authenticate_company!, only: [:new, :create, :edit, :update, :destroy]
 
   def show
@@ -27,7 +27,7 @@ class ResponsesController < ApplicationController
 
   def update
     if @response.update(response_params)
-      redirect_to company_review_path(@review)
+      redirect_to company_review_path(@company, @review)
     else
       render 'edit'
     end
