@@ -1,16 +1,16 @@
 <div class="row">
   <div class="review-response card light-blue lighten-5 col s5">
-    <div class="reviewer">
+    <div class="card-author">
       <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
     </div>
     <div class="card-title">
-      <p class="review-title"><%= link_to review.title, company_review_path(review.company, review) %></p>
+      <p><%= link_to review.title, company_review_path(review.company, review) %></p>
     </div>
     <div>
       <%= star_rating_helper(review.rating) %>
     </div>
     <div class="card-content">
-      <p class="review-content"><%= review.content %></p>
+      <p><%= review.content %></p>
 
       <% if review.image.model.image? %>
         <%= image_tag review.image.url, width: '40%' %>
@@ -33,20 +33,19 @@
 
   <% if review.response %>
     <div class="review-response card col s5">
-      <div class="company">
+      <div class="card-author">
         <span><%= review.response.company.name %>'s Response:</span>
       </div>
       <div class="card-title">
-        <p class=""><%= review.response.title %></p>
+        <p><%= link_to review.response.title, company_review_response_path(review.company, review, review.response) %></p>
       </div>
       <div class="card-content">
-        <p class=""><%= review.response.content %></p>
+        <p><%= review.response.content %></p>
       </div>
       <% if current_company == @company %>
         <%= link_to 'Edit Response', edit_company_review_response_path(review.company, review, review.response), class: 'btn' %>
         <%= link_to 'Delete Response', company_review_response_path(review.company, review, review.response), method: :delete, class: 'btn red' %>
       <% end %>
-      
     </div>
   <% end %>
 </div>

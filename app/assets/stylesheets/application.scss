@@ -65,21 +65,19 @@ search-bar, input[placeholder] {
 .sample-review {
   min-height: 250px !important;
 }
-.review-title{
-  text-decoration: underline;
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-}
-
-.review-content{
-  margin-top: 5px;
+.card-title{
+  p {
+    text-decoration: underline;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  };
 }
 
 .devise h2{
   margin-top: 0px;
 }
 
-.reviewer {
+.card-author {
   margin: 2% 0% 0% 0% !important;
   .avatar {
     border-radius: 50%;
@@ -90,6 +88,9 @@ search-bar, input[placeholder] {
 
 .card-content {
   padding: 2.5% !important;
+  p {
+    margin-top: 5px;
+  }
 }
 
 .btn {
