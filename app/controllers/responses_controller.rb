@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:new, :edit, :update, :destroy]
-  before_action :set_review, only: [:new, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :new, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :new, :edit, :update, :destroy]
   before_action :authenticate_company!, only: [:new, :create, :edit, :update, :destroy]
 
   def show

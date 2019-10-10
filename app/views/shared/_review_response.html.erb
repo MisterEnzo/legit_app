@@ -1,0 +1,8 @@
+<div class="row">
+  <%= render partial: 'shared/review', locals: {company: @company, review: review} %>
+  
+
+  <% if review.response %>
+    <%= render partial: 'shared/response', locals: {company: @company, review: review, response: review.response} %>
+  <% end %>
+</div>

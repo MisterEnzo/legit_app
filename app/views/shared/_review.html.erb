@@ -1,37 +1,31 @@
-<div class="row">
-  <div class="review-response card light-blue lighten-5 col s5">
-    <div class="card-author">
-      <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
-    </div>
-    <div class="card-title">
-      <p><%= link_to review.title, company_review_path(review.company, review) %></p>
-    </div>
-    <div>
-      <%= star_rating_helper(review.rating) %>
-    </div>
-    <div class="card-content">
-      <p><%= review.content %></p>
+<div class="review-response card light-blue lighten-5 col s5">
+  <div class="card-author">
+    <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
+  </div>
+  <div class="card-title">
+    <p><%= link_to review.title, company_review_path(review.company, review) %></p>
+  </div>
+  <div>
+    <%= star_rating_helper(review.rating) %>
+  </div>
+  <div class="card-content">
+    <p><%= review.content %></p>
 
-      <% if review.image.model.image? %>
-        <%= image_tag review.image.url, width: '40%' %>
-      <% end %>
-    </div>
-    <% if policy(review).edit? %>
-      <%= link_to 'Edit', edit_company_review_path(@company, review) %>
-    <% end %>
-    <% if policy(review).destroy? %>
-      <%= link_to 'Delete', company_review_path(review.company, review), method: :delete, data: {confirm: 'Are you sure?' } %>
-    <% end %>
-    <% if current_company == @company %>
-      <% if review.response %>
-        <%= link_to 'Edit Response', edit_company_review_response_path(review.company, review, review.response), class: 'btn' %>
-      <% else %>
-        <%= link_to 'Respond', new_company_review_response_path(review.company, review), class: "btn" %>
-      <% end %>
+    <% if review.image.model.image? %>
+      <%= image_tag review.image.url, width: '40%' %>
     <% end %>
   </div>
-
-  <% if review.response %>
-    <%= render partial: 'shared/response', locals: {company: @company, review: review, response: review.response} %>
+  <% if policy(review).edit? %>
+    <%= link_to 'Edit', edit_company_review_path(@company, review) %>
+  <% end %>
+  <% if policy(review).destroy? %>
+    <%= link_to 'Delete', company_review_path(review.company, review), method: :delete, data: {confirm: 'Are you sure?' } %>
+  <% end %>
+  <% if current_company == @company %>
+    <% if review.response %>
+      <%= link_to 'Edit Response', edit_company_review_response_path(review.company, review, review.response), class: 'btn' %>
+    <% else %>
+      <%= link_to 'Respond', new_company_review_response_path(review.company, review), class: "btn" %>
+    <% end %>
   <% end %>
 </div>
