@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:index, :show] do
     resources :reviews do
-      resources :responses
+      resources :responses, except: [:show]
     end
   end
 
