@@ -3,11 +3,11 @@
   <p><%= @company.address %></p>
   <p><%= @company.telephone if @company.telephone %></p>
   <% if current_company == Company.find(params[:id]) %>
-    <%= link_to "Edit Profile", edit_company_registration_path, class: "btn lighten-3 blue" %>
+    <%= link_to "Edit Profile", edit_company_registration_path, class: "btn" %>
   <% end %>
   <div>
     <%= render 'shared/total_rating' %>
-    <%= link_to "#{@reviews.count} reviews", company_reviews_path(@company) %>
+    <%= link_to "#{@reviews.count} reviews", company_reviews_path(@company), class: "btn blue lighten-3" %>
   </div>
   <div>
     <% if !current_company %>

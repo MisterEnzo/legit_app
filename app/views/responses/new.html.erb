@@ -1,40 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="review card light-blue lighten-5 col s6 offset-s3">
-      <div class="card-author">
-        <span><%= image_tag gravatar(@review.user), class: "avatar" %> <%= @review.user.email %></span>
-      </div>
-      <div class="card-title">
-        <p class="card-title"><%= link_to @review.title, company_review_path(@review.company, @review) %></p>
-      </div>
-      <div>
-        <%= star_rating_helper(@review.rating) %>
-      </div>
-      <div class="card-content">
-        <p class="review-content"><%= @review.content %></p>
-
-        <% if @review.image.model.image? %>
-          <%= image_tag @review.image.url, width: '40%' %>
+    <%= render partial: "shared/review", object: @review, as: :review %>
+    <div class="col s5">
+      <h5>Response</h5>
+      <%= form_for([@company, @review, @response]) do |f| %>
+        <% if @response.errors.any? %>
+          <p>There are <%= pluralize(@response.errors.count, 'error') %>
+          <ul>
+            <% @response.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <h5>Response</h5>
-    <%= form_for([@company, @review, @response]) do |f| %>
-      <% if @response.errors.any? %>
-        <p>There are <%= pluralize(@response.errors.count, 'error') %>
-        <ul>
-          <% @response.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "materialize-textarea" %>
+        <%= f.submit "Submit Response", class: "btn" %>
       <% end %>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      <%= f.label :content %>
-      <%= f.text_area :content, class: "materialize-textarea" %>
-      <%= f.submit "Submit Response", class: "btn" %>
-    <% end %>
+    </div>
   </div>
 </div>

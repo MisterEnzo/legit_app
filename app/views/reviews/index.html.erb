@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @company.name %></h1>
+  <h1><%= link_to @company.name, company_path(@company) %></h1>
   <%= render 'shared/total_rating' %>
   <% if !current_company %>
     <div>
