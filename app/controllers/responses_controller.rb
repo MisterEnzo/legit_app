@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
   before_action :set_response, except: [:new, :create]
-  before_action :set_company, except: [:create]
-  before_action :set_review, except: [:create]
+  before_action :set_company
+  before_action :set_review
   before_action :authenticate_company!, except: [:show]
 
   def show
@@ -13,8 +13,8 @@ class ResponsesController < ApplicationController
 
   def create
     @response = Response.new(response_params)
-    @response.company_id = params[:company_id]
-    @response.review_id = params[:review_id]
+    @response.company_id = @company.id
+    @response.review_id = @review.id
     if @response.save
       redirect_to company_reviews_path(@response.company_id)
     else
