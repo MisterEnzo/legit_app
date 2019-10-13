@@ -19,7 +19,7 @@
 <div class="container">
   <h5>Recent Reviews:</h5>
   <div class="row">
-    <%= render partial: 'shared/review_response', collection: @recent_reviews, as: :review %>
+    <%= render partial: 'shared/review_response', collection: @recent_reviews, as: :review, locals: {form: false} %>
   </div>
   
   <% content_for :after_js do %>

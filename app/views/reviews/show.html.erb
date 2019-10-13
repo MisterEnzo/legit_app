@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render partial: "shared/review_response", object: @review, as: :review %>
+    <%= render partial: "shared/review_response", object: @review, as: :review, locals: {form: false} %>
   </div>
   <%= link_to "Back to reviews", company_reviews_path(@company), class: "btn blue lighten-3" %>
 </div>

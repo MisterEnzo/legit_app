@@ -1,23 +1,9 @@
 <div class="container">
   <div class="row">
-    <%= render partial: "shared/review", object: @review, as: :review %>
+    <%= render partial: "shared/review", object: @review, as: :review, locals: {form: true} %>
     <div class="col s5">
       <h5>Edit Response</h5>
-      <%= form_for([@company, @review, @response]) do |f| %>
-        <% if @response.errors.any? %>
-          <p>There are <%= pluralize(@response.errors.count, 'error') %>
-          <ul>
-            <% @response.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-        <%= f.label :content %>
-        <%= f.text_area :content, class: "materialize-textarea" %>
-        <%= f.submit "Submit Response" %>
-      <% end %>
+      <%= render partial: "shared/response_form", locals: {company: @company, review: @review, response: @response, action: "Edit Response"} %>
     </div>
   </div>
 </div>
