@@ -9,7 +9,7 @@
     <p><%= response.content %></p>
   </div>
   <% if current_company == @company %>
-    <%= link_to 'Edit Response', edit_company_review_response_path(company, review, response), class: 'btn' %>
-    <%= link_to 'Delete Response', company_review_response_path(company, review, response), method: :delete, class: 'btn red' %>
+    <%= link_to 'Edit Response', edit_company_review_response_path(company, review, response), class: 'btn-small' %>
+    <%= link_to 'Delete Response', company_review_response_path(company, review, response), method: :delete, class: 'btn-small red' %>
   <% end %>
 </div>
