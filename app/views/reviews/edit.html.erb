@@ -1,17 +1,8 @@
-<%= form_for([@company, @review]) do |f| %>
-  <% if @review.errors.any? %>
-    <p>There are <%= pluralize(@review.errors.count, 'error') %></p>
-    <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>    
-      <% end %>
-    </ul>
-  <% end %>
-  <%= hidden_field_tag :company_id, @company.id %>
-  <%= hidden_field_tag :user_id, 1 %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content, class: "materialize-textarea" %>
-  <%= f.submit "Save" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h3>Review for <%= @company.name %></h3>
+    <div class="col s6">
+      <%= render partial: "shared/review_form", locals: {company: @company, review: @review, action: "Edit Review"} %>
+    </div>
+  </div>
+</div>

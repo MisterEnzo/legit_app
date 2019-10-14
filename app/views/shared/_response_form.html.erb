@@ -1,9 +1,9 @@
 <%= form_for([company, review, response]) do |f| %>
   <% if @response.errors.any? %>
-    <p>There are <%= pluralize(response.errors.count, 'error') %>
+    <h6 class="red-text lighten-3">There are <%= pluralize(response.errors.count, 'error') %></h6>
     <ul>
       <% @response.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="red-text lighten-3"><%= message %></li>
       <% end %>
     </ul>
   <% end %>

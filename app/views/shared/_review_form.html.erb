@@ -1,0 +1,26 @@
+<%= form_for([company, review]) do |f| %>
+  <% if review.errors.any? %>
+    <h6 class="red-text lighten 3">There are <%= pluralize(review.errors.count, 'error') %></h6>
+    <ul>
+      <% review.errors.full_messages do |message| %>
+        <li class="red-text lighten-3"><%= message %></li>    
+      <% end %>
+    </ul>
+  <% end %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content, class: "materialize-textarea" %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <div class="file-field input-field">
+    <div class="btn-small">
+      <span>File</span>
+      <%= f.file_field :image %>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+    </div>
+  </div>
+  <%= f.submit "#{action}", class: "btn" %>
+<% end %>
