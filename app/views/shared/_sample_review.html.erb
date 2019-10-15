@@ -1,9 +1,6 @@
-<div class="card light-blue lighten-5 carousel-item">
+<div class="carousel-item light-blue lighten-5">
   <div>
     <p>Review of <%= review.company.name %></p>
-  </div>
-  <div class="card-author">
-    <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
   </div>
   <div class="card-title">
     <p class="card-title"><%= link_to review.title, company_review_path(review.company, review) %></p>
@@ -12,7 +9,7 @@
     <%= star_rating_helper(review.rating) %>
   </div>
   <div class="card-content">
-    <p class="review-content"><%= review.content %></p>
+    <p class="review-content overflow-ellipsis"><%= review.content %></p>
   </div>
   <% if policy(review).edit? %>
     <%= link_to 'Edit', edit_company_review_path(@company, review) %>
