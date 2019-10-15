@@ -1,18 +1,11 @@
 <div class="carousel-item light-blue lighten-5 card">
-  
-  <div class="card-title">
-    <p class="card-title"><%= link_to review.title, company_review_path(review.company, review) %></p>
+  <div>
+    <h6 class="sample-review-title"><%= link_to "Review of #{review.company.name}", company_review_path(review.company, review) %></h6>
   </div>
   <div>
-    <%= star_rating_helper(review.rating) %>
+    <span class="sample-stars"><%= star_rating_helper(review.rating) %></span>
   </div>
-  <div class="card-content">
-    <p class="review-content"><%= review.content[0..100] %><%= review.content.length > 100 ? "..." : "" %></p>
+  <div>
+    <p class="sample-content"><%= review.content[0..100] %><%= review.content.length > 100 ? "..." : "" %></p>
   </div>
-  <% if policy(review).edit? %>
-    <%= link_to 'Edit', edit_company_review_path(@company, review) %>
-  <% end %>
-  <% if policy(review).destroy? %>
-    <%= link_to 'Delete', company_review_path(review.company, review), method: :delete, data: {confirm: 'Are you sure?' } %>
-  <% end %>
 </div>
