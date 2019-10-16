@@ -1,9 +1,9 @@
 <div class="review-response card light-blue lighten-5 col s5">
   <div class="card-author">
-    <span><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></span>
+    <h6><%= image_tag gravatar(review.user), class: "avatar" %> <%= review.user.email %></h6>
   </div>
-  <div class="card-title">
-    <p><%= link_to review.title, company_review_path(review.company, review) %></p>
+  <div>
+    <h5><%= link_to review.title, company_review_path(review.company, review) %></h5>
   </div>
   <div>
     <%= star_rating_helper(review.rating) %>
@@ -23,7 +23,7 @@
   <% end %>
   <% if current_company == @company && !form %>
     <% if !review.response %>
-      <%= link_to 'Respond', new_company_review_response_path(review.company, review), class: "btn" %>
+      <%= link_to 'Respond', new_company_review_response_path(review.company, review), class: "btn-small" %>
     <% end %>
   <% end %>
 </div>
