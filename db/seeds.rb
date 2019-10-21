@@ -1,5 +1,5 @@
 puts "Creating sample users.."
-3.times do |user|
+5.times do |user|
   User.create!(
     email: "user#{user}@legit.com",
     password: 123123
@@ -7,7 +7,7 @@ puts "Creating sample users.."
 end
 puts "Created users."
 
-puts "Creating companies..."
+puts "Creating sample data..."
 Company.create!(
   name: 'Facebook',
   email: 'support@facebook.com',
@@ -22,7 +22,21 @@ Company.create!(
   address: 'Mountain View, California'
 )
 
-5.times do |company|
+Company.create!(
+  name: 'Amazon',
+  email: 'support@amazon.com',
+  password: 123123,
+  address: 'Arlington, Virginia'
+)
+
+Company.create!(
+  name: 'Apple',
+  email: 'support@apple.com',
+  password: 123123,
+  address: 'Cupertino, California'
+)
+
+10.times do |company|
   name = Faker::Company.name.downcase.gsub(/[^0-9A-Za-z]/, '')
   Company.create!(
     name: name,
@@ -31,17 +45,22 @@ Company.create!(
     address: Faker::Address.full_address,
     telephone: Faker::Number.number(7)
   )
-end
-puts "Created companies."
-
-puts "Creating sample reviews.."
-6.times do |review|
+  quote = Faker::Hobbit.quote
   Review.create!(
-    title: "Review ##{review + 1}",
-    content: Faker::Hobbit.quote,
-    user_id: 1,
-    company_id: 1,
-    rating: (rand()*5)
+    title: "#{quote[0..10]}...",
+    content: quote,
+    user_id: (rand()*5).ceil,
+    company_id: Company.last.id,
+    rating: (rand()*5).ceil
+  )
+  quote = Faker::Hobbit.quote
+  Response.create!(
+    title: "#{quote[0..10]}...",
+    content: quote,
+    company_id: Company.last.id,
+    review_id: Review.last.id
   )
 end
-puts "Created reviews."
+puts "Created sample data."
+
+
