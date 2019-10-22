@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <div class="container">
   <h1><%= @company.name %></h1>
   <p><%= @company.address %></p>

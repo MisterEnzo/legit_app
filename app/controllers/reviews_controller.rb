@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_company
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :check_review, only: [:create]
 
   def index
     @reviews = @company.reviews
@@ -58,6 +59,13 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:title, :content, :rating, :image)
+    end
+
+    def check_review
+      if current_user.reviews.include?(Review.find_by(company_id: @company))
+        redirect_to company_path(@company.id)
+        flash[:notice] = "You already reviewed the company"
+      end
     end
 
 end
