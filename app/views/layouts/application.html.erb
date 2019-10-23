@@ -11,6 +11,7 @@
 
   <body>
     <%= render 'shared/nav' %>
+    <%= render 'shared/flash_messages' %>
     <%= yield %>
     <%= yield :after_js %>
     <% if Rails.env.development? %>

@@ -2,9 +2,11 @@
   <h1><%= link_to @company.name, company_path(@company) %></h1>
   <%= render 'shared/total_rating' %>
   <% if !current_company %>
-    <div>
-      <%= link_to "Review Company", new_company_review_path(@company), class: "btn" %>
-    </div>
+    <% if !current_user || !current_user.reviews.include?(Review.find_by(company_id: @company, user_id: current_user.id)) %>
+      <%= link_to "Write a Review", new_company_review_path(@company), class: "btn" %>
+    <% else %>
+      <%= link_to "Edit Your Review", edit_company_review_path(@company, current_user.reviews.find_by(company_id: @company)), class: "btn" %>
+    <% end %>
   <% end %>
 </div>
 

@@ -62,7 +62,7 @@ class ReviewsController < ApplicationController
     end
 
     def check_review
-      if current_user.reviews.include?(Review.find_by(company_id: @company))
+      if current_user.reviews.include?(Review.find_by(company_id: @company, user_id: current_user.id))
         redirect_to company_path(@company.id)
         flash[:notice] = "You already reviewed the company"
       end
