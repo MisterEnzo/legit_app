@@ -1,8 +1,8 @@
-<div class="container flash-messages">
+<div class="flash-messages container">
   <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
+    <div class="flash blue lighten-4"><p><%= flash[:notice] %></p></div>
   <% end %>
   <% if flash[:alert] %>
-    <div class="alert"><%= flash[:alert] %></div>
+    <div class="flash red lighten-4"><p><%= flash[:alert] %></p></div>
   <% end %>
 </div>

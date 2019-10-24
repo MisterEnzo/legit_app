@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @company.name %></h1>
+  <h1 class="company-name"><%= @company.name %></h1>
   <p><%= @company.address %></p>
   <p><%= @company.telephone if @company.telephone %></p>
   <% if current_company == Company.find(params[:id]) %>
