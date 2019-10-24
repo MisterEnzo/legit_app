@@ -37,7 +37,7 @@ Company.create!(
 )
 
 10.times do |company|
-  name = Faker::Company.name.downcase.gsub(/[^0-9A-Za-z]/, '')
+  name = Faker::Company.name.downcase.gsub(/[^0-9A-Za-z]/, '')[0..10]
   Company.create!(
     name: name,
     email: "contact@#{name}.com",
