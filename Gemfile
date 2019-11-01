@@ -12,14 +12,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'materialize-sass', '~> 1.0'
 gem 'material_icons'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'faker', '~> 1.9', '>= 1.9.1'
 gem 'pundit'
 gem 'jquery-rails'
 
 
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
-gem 'mini_magick', '~> 4.9', '>= 4.9.2'
+gem "mini_magick", ">= 4.9.4"
 gem 'carrierwave-aws', '~> 1.3'
 gem 'dotenv-rails', '~> 2.5'
 
